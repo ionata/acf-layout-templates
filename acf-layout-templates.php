@@ -4,7 +4,7 @@
  * flexible layouts in a modular way.
  *
  * @author Evo Stamatov <evo@ionata.com.au>
- * @version 1.0.0
+ * @version 1.0.1
  *
  * ## Available methods
  *
@@ -291,19 +291,18 @@ function load_acf_layout_template($raw_layout_name, $layout_base = null) {
 			}
 		}
 
-		if (null === $prefix &&
-			'' !== $layout_base &&
+		if ((null === $prefix || '' === $prefix) &&
 			'acf-flex-layout' !== $layout_base)
 		{
 			$exclude = true;
 			$exclude = apply_filters('lalt_exclude_base_as_root_fallback_' . $layout_base, $exclude, $layout_name);
 			$exclude = apply_filters('lalt_exclude_base_as_root_fallback',                 $exclude, $layout_base, $layout_name);
-			if ($exclude) {
-				// pop $to_pop above
-				foreach ($template_names as $name) {
-					if ($name !== $to_pop) {
-						$template_paths[] = $name;
-					}
+
+			$to_exclude = $exclude ? $layout_base . '.php' : '';
+
+			foreach ($template_names as $name) {
+				if ($name !== $to_exclude) {
+					$template_paths[] = $name;
 				}
 			}
 		}
