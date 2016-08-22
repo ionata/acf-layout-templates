@@ -32,8 +32,8 @@ A few helpers to print ACF flexible layouts in a modular way.
 ?>
 ```
 
-The stylesheet and template path portions in __DIR__ will be stripped
-automatically, thus __DIR__ should be within the STYLESHEETPATH or
+The stylesheet and template path portions in `__DIR__` will be stripped
+automatically, thus `__DIR__` should be within the STYLESHEETPATH or
 TEMPLATEPATH.
 
 This will print the flex layouts using a template, located at one of the
